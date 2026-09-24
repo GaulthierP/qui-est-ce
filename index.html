@@ -23,7 +23,7 @@
   body{
     margin:0;
     background:var(--teal-dark);
-    background-image: radial-gradient(circle at 15% 0%, var(--teal) 0%, var(--teal-dark) 55%);
+    background-image: radial-gradient(circle at 30% 0%, var(--teal) 0%, var(--teal-dark) 55%);
     color:var(--cream);
     font-family:'Nunito Sans', -apple-system, sans-serif;
     min-height:100vh;
@@ -544,7 +544,7 @@ function renderQuestion(){
   state.startTime = Date.now();
   if(state.timerInterval) clearInterval(state.timerInterval);
   const options = getOptionsForQuestion(q);
-  const DURATION = 15;
+  const DURATION = 30;
   app.innerHTML = `
     ${renderProgress()}
     <div class="dossier" data-num="Dossier ${state.qIndex+1}/${state.questions.length}">
@@ -568,7 +568,7 @@ function renderQuestion(){
     timeLeft--;
     timerText.textContent = Math.max(timeLeft, 0);
     timerBar.style.width = (Math.max(timeLeft,0) / DURATION * 100) + '%';
-    if(timeLeft <= 5) timerBar.classList.add('low');
+    if(timeLeft <= 10) timerBar.classList.add('low');
     if(timeLeft <= 0){
       clearInterval(state.timerInterval);
       handleAnswer(null, q, true);
